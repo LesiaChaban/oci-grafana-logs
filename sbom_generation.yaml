@@ -32,6 +32,7 @@ steps:
       tar -C ${INSTALL_DIR} -xzf go-${GO_VERSION}.tar.gz && \
       export GOROOT=${INSTALL_DIR}/go && \
       export PATH=${GOROOT}/bin:${PATH} && \
+      go version && \
       go mod tidy && \
       cdxgen -t golang -o artifactSBOM.json --spec-version 1.4 --project-name "$(basename $OCI_PRIMARY_SOURCE_URL)" --no-recurse && \
       mv artifactSBOM.json ${OCI_PRIMARY_SOURCE_DIR}/artifactSBOM.json
